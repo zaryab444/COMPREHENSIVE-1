@@ -120,3 +120,5 @@ C:\Users\Lenovo\Desktop\Comprehensive 1\MARK-17-Real-Estate\Frontend\WebAPI\obj\
 C:\Users\Lenovo\Desktop\Comprehensive 1\MARK-17-Real-Estate\Frontend\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.dll
 C:\Users\Lenovo\Desktop\Comprehensive 1\MARK-17-Real-Estate\Frontend\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.pdb
 C:\Users\Lenovo\Desktop\Comprehensive 1\MARK-17-Real-Estate\Frontend\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.genruntimeconfig.cache
+C:\Users\Lenovo\Desktop\Comprehensive 1\MARK-17-Real-Estate\Frontend\WebAPI\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\Lenovo\Desktop\Comprehensive 1\MARK-17-Real-Estate\Frontend\WebAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
