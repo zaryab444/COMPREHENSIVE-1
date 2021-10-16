@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Data;
@@ -34,6 +35,7 @@ namespace WebAPI.Controllers
     // http://localhost:5000/api/city
     public async Task<IActionResult> GetCities()
     {
+      throw new UnauthorizedAccessException();
       var cities = await uow.CityRepository.GetCitiesAsync();
  var citiesDto = mapper.Map<IEnumerable<CityDto>>(cities);
 
@@ -50,17 +52,54 @@ namespace WebAPI.Controllers
       var city = mapper.Map<City>(cityDto);
       city.LastUpdatedBy = 1;
       city.LastUpdatedOn = DateTime.Now;
-
-    //   var city = new City{
-    //    Name = cityDto.Name,
-    //   LastUpdatedBy = 1,
-    //   LastUpdatedOn = DateTime.Now
-    // };
       uow.CityRepository.AddCity(city);
       await uow.SaveAsync();
       return StatusCode(201);
 
+
     }
+
+ //  http://localhost:5000/api/city/update/id
+      [HttpPut("update/{id}")]
+     public async Task<IActionResult> UpdateCity(int id , CityDto cityDto)
+       {
+          try {
+ if(id != cityDto.Id)
+             return BadRequest("Update not allowed");
+            var cityFromDb = await uow.CityRepository.FindCity(id);
+            if(cityFromDb == null)
+            return BadRequest("Update not allowed");
+            cityFromDb.LastUpdatedBy = 1;
+            cityFromDb.LastUpdatedOn = DateTime.Now;
+            mapper.Map(cityDto, cityFromDb);
+            throw new Exception("Some unknown error occured");
+
+            await uow.SaveAsync();
+            return StatusCode(200);
+          } catch{
+                  return StatusCode(500,"Some unkonwn error occured");
+          }
+
+
+        }
+
+
+//  http://localhost:5000/api/city/update/id
+      [HttpPatch("update/{id}")]
+     public async Task<IActionResult> UpdateCityPatch(int id ,JsonPatchDocument< City> cityToPatch)
+       {
+            var cityFromDb = await uow.CityRepository.FindCity(id);
+            cityFromDb.LastUpdatedBy = 1;
+            cityFromDb.LastUpdatedOn = DateTime.Now;
+
+           cityToPatch.ApplyTo(cityFromDb,ModelState);
+            await uow.SaveAsync();
+            return StatusCode(200);
+        }
+
+
+
+
 
     [HttpDelete("delete/{id}")]
 
