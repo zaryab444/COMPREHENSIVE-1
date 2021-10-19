@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "btVmEMIdDTaFZ9ctwzNoDPuQ0tkiuJOVxj/nsFlcFhHRjaYlRsW6gSMcCGJ1Tcfv8+urT8VgW+l/+CMTav3t2g==",
+  "dgSpecHash": "JIpRWevz7uEnme0FLMiKFPtuvNSG95aX0zt1H5DP5znvC09EPHJsuBKJ1Gk6BeBAFdKPi7um4Wp/hPBJ//k1Jw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\Comprehensive 1\\MARK-17-Real-Estate\\Frontend\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.8\\microsoft.aspnetcore.authentication.jwtbearer.3.1.8.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.8\\microsoft.aspnetcore.jsonpatch.3.1.8.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.8\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.8.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
