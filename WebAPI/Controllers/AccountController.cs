@@ -26,7 +26,13 @@ namespace WebAPI.Controllers
 
     }
 
-    //api/account/login
+   // http://localhost:5000/api/account/login
+
+//    {
+//     "UserName":"zay",
+//     "Password": "1233"
+// }
+
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginReqDto loginReq)
     {

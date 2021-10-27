@@ -33,7 +33,7 @@ namespace WebAPI.Controllers
 
     [HttpGet("")]
     // http://localhost:5000/api/city
-    //[AllowAnonymous]
+    [AllowAnonymous]
     public async Task<IActionResult> GetCities()
     {
 
