@@ -8,5 +8,11 @@ namespace WebAPI.interfaces
 
       Task<User> Authenticate(string userName, string password);
 
+        void Register (string userName, string password);
+
+           Task<bool> UserAlreadyExistss(string userName, string password);
+
+
+
     }
 }

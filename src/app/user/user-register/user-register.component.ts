@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/model/user';
-import { UserServiceService } from 'src/app/services/user-service.service';
+import { UserForRegister } from 'src/app/model/user';
+
 import { AlertifyService } from 'src/app/services/alertify.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -12,21 +13,12 @@ import { AlertifyService } from 'src/app/services/alertify.service';
 })
 export class UserRegisterComponent implements OnInit {
       registerationForm: FormGroup;
-      user: User;
+      user: UserForRegister;
       userSubmitted: boolean
-  constructor(private fb: FormBuilder, private userService: UserServiceService , private alertifyservice : AlertifyService) { }
+  constructor(private fb: FormBuilder, private authService: AuthService , private alertifyservice : AlertifyService) { }
 
   ngOnInit(): void {
-    // this.registerationForm = new FormGroup(
-    //   {
-    //     userName: new FormControl(null, Validators.required),
-    //     email: new FormControl(null, [Validators.required, Validators.email]),
-    //     password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
-    //     confirmPassword: new  FormControl(null, [Validators.required]),
-    //     mobile: new FormControl(null, [Validators.required, Validators.maxLength(10)])
 
-
-    //   }, this.passwordMatchingValidatior);
     this.createRegisterationForm();
   }
 
@@ -86,16 +78,16 @@ onSubmit(){
 
   if(this.registerationForm.valid){
   // this.user = Object.assign(this.user, this.registerationForm.value);
-  this.userService.addUser(this.userData());
-  this.registerationForm.reset();
-  this.userSubmitted = false;
- this.alertifyservice.success('Successfully login');
-  } else{
-    this.alertifyservice.error('Login Failed');
+  this.authService.registerUser(this.userData()).subscribe(()=>{
+    this.registerationForm.reset();
+    this.userSubmitted = false;
+   this.alertifyservice.success('Successfully Register');
+  });
+
   }
 }
 
-userData(): User{
+userData(): UserForRegister{
   return this.user = {
 
     userName: this.userName.value,

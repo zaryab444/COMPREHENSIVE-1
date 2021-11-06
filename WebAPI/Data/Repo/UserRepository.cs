@@ -19,5 +19,18 @@ namespace WebAPI.Data.Repo
    return await  dc.Users.FirstOrDefaultAsync(x=> x.Username == userName && x.Password == password);
 
     }
+
+    public void Register(string userName, string password)
+    {
+      User user = new User();
+      user.Username = userName;
+      user.Password = password;
+      dc.Users.Add(user);
+    }
+
+    public async Task<bool> UserAlreadyExistss(string userName, string password)
+    {
+     return await dc.Users.AnyAsync(x=>x.Username == userName);
+    }
   }
 }

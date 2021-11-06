@@ -1,8 +1,8 @@
-export interface User{
-  userName? :string;
+export interface UserForRegister{
+  userName :string;
   email?:string;
   password?:string;
-  mobile?:string;
+  mobile:string;
 }
 
 export interface userForLogin{
