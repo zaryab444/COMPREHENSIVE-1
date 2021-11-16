@@ -7,6 +7,7 @@ import { IProperty } from '../model/iproperty';
 import { IPropertyBase } from '../model/ipropertybase';
 import { Property } from '../model/property';
 import { environment } from 'src/environments/environment';
+import { getDate } from 'ngx-bootstrap/chronos/utils/date-getters';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +21,7 @@ export class HousingService {
    }
 
   getProperty(id:number){
-    return this.getAllProperties(1).pipe(
-      map(propertiesArray =>{
-      // throw new Error('Some error');
-        return propertiesArray.find(p=>p.id === id);
-      })
-    );
+    return this.http.get<Property>(this.baseUrl + '/property/detail/'+id.toString());
   }
 
   getAllProperties(SellRent?: number): Observable<Property[]> {
@@ -54,4 +50,25 @@ export class HousingService {
       return 101;
     }
   }
+
+  getPropertyAge(dateofEstablishment: Date): string{
+    const today = new Date();
+    const estDate = new Date(dateofEstablishment);
+    let age = today.getFullYear() - estDate.getFullYear();
+    const m = today.getMonth() - estDate.getMonth();
+
+    //Current month smaller than establishment month or same month but current date smaller than establishment date
+
+
+    if(m<0 || (m===0 && today.getDate() < estDate.getDate())){
+      age --;
+    }
+
+    if(age ===0){
+      return 'Less than a year';
+    }
+
+    return age.toString();
+  }
+
 }

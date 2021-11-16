@@ -29,6 +29,8 @@ property = new Property();
           this.property = data['prp'];
         }
     );
+    this.property.age = this.housingService.getPropertyAge(this.property.estPossessionOn);
+
 
     // this.route.params.subscribe(
     //   (params) => {
