@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.interfaces;
@@ -26,7 +27,13 @@ namespace WebAPI.Data.Repo
 
     public async Task<IEnumerable<Property>> GetPropertiesAsync(int sellRent)
     {
-      var properties = await dc.Properties.ToListAsync();
+      var properties = await dc.Properties.
+      Include(p => p.PropertyType)
+      .Include(p => p.city)
+      .Include(p => p.FurnishingType)
+
+
+      .Where(p => p.SellRent == sellRent).ToListAsync();
       return properties;
     }
   }
