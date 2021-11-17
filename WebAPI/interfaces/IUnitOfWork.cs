@@ -10,6 +10,8 @@ namespace WebAPI.interfaces
          IUserRepository UserRepository {get;}
 
          IPropertyRepository PropertyRepository{get;}
+
+         IPropertyTypeRepository propertyTypeRepository {get;}
          Task<bool> SaveAsync();
     }
 }

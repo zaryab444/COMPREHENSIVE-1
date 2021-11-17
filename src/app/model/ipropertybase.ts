@@ -1,4 +1,5 @@
 export interface IPropertyBase {
+
   id: number;
   sellRent: number;
   name: string;
@@ -10,4 +11,6 @@ export interface IPropertyBase {
   city: string;
   readyToMove: number;//
   image?: string;
+  estPossessionOn:Date;
+
 }

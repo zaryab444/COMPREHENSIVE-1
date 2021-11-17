@@ -39,7 +39,8 @@ export class AddPropertyComponent implements OnInit {
     bhk: null,
     builtArea: null,
     city: null,
-    readyToMove: null
+    readyToMove: null,
+    estPossessionOn:null
   };
 
 
