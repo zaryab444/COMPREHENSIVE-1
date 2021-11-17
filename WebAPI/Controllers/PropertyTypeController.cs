@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
             this.mapper = mapper;
         }
 
-         // GET api/propertytype/list
+         // GET http://localhost:5000/api/propertytype/list
         [HttpGet ("list")]
         [AllowAnonymous]
         public async Task<IActionResult> GetPropertyTypes()

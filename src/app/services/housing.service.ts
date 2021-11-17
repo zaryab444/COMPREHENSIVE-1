@@ -8,6 +8,7 @@ import { IPropertyBase } from '../model/ipropertybase';
 import { Property } from '../model/property';
 import { environment } from 'src/environments/environment';
 import { getDate } from 'ngx-bootstrap/chronos/utils/date-getters';
+import { Ikeyvaluepair } from '../model/ikeyvaluepair';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,17 @@ export class HousingService {
    getAllCities(): Observable<string[]> {
      return this.http.get<string[]>('http://localhost:5000/api/city');
    }
+
+   getPropertyTypes(): Observable<Ikeyvaluepair[]> {
+    return this.http.get<Ikeyvaluepair[]>(this.baseUrl + '/propertytype/list');
+}
+
+getFurnishingTypes(): Observable<Ikeyvaluepair[]> {
+    return this.http.get<Ikeyvaluepair[]>(this.baseUrl + '/furnishingtype/list');
+}
+
+
+
 
   getProperty(id:number){
     return this.http.get<Property>(this.baseUrl + '/property/detail/'+id.toString());
