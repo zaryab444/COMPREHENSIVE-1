@@ -39,7 +39,7 @@ const appRoutes : Routes = [
 {path: 'rent-property', component:PropertyListComponent},
 
 {path: 'property-detail/:id', component:PropertyDetailComponent, resolve:{prp:PropertyDetailService}},
-{path: 'user/login', component:UserLoginComponent},
+{path: 'login', component:UserLoginComponent},
 {path: 'user/register', component: UserRegisterComponent},
 {path:'**', component:PagenotfoundComponent}
 ]
